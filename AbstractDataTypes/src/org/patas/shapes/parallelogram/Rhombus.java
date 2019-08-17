@@ -7,19 +7,9 @@ class Rhombus extends Parallelogram {
         super("Rhombus", side, side, angleRad);
     }
 
-    private static Rhombus newRhombusByAngleInDegrees(double side, double angleDeg) {
-        return new Rhombus(side, Math.toRadians(angleDeg));
-    }
-
-    private static Rhombus newRhombusByDiagonals(double diagonalA, double diagonalB) {
-        double side = Math.sqrt((diagonalA * diagonalA / 4) + (diagonalB * diagonalB / 4));
-        double angleRad = 2 * Math.atan2(diagonalA, diagonalB);
-        return new Rhombus(side, angleRad);
-    }
-
     static Rhombus askForRhombus(Scanner sc) {
-        Rhombus rhombus = null;
-        while (rhombus == null) {
+        double side, angleRad;
+        while (true) {
             System.out.println("What do you know about the rhombus?");
             System.out.println("    1) Its side length and an angle in radians");
             System.out.println("    2) Its side length and an angle in degrees");
@@ -27,27 +17,28 @@ class Rhombus extends Parallelogram {
             switch (sc.nextInt()) {
                 case 1:
                     System.out.println("Side length: ");
-                    double side = sc.nextDouble();
+                    side = sc.nextDouble();
                     System.out.println("Angle in radians: ");
-                    double angleRad = sc.nextDouble();
-                    rhombus = new Rhombus(side, angleRad);
+                    angleRad = sc.nextDouble();
                     break;
                 case 2:
                     System.out.println("Side length: ");
-                    double sideDeg = sc.nextDouble();
+                    side = sc.nextDouble();
                     System.out.println("Angle in degrees: ");
-                    double angleDeg = sc.nextDouble();
-                    rhombus = Rhombus.newRhombusByAngleInDegrees(sideDeg, angleDeg);
+                    angleRad = Math.toRadians(sc.nextDouble());
                     break;
                 case 3:
                     System.out.println("Diagonal 1: ");
                     double diagonalA = sc.nextDouble();
                     System.out.println("Diagonal 2: ");
                     double diagonalB = sc.nextDouble();
-                    rhombus = Rhombus.newRhombusByDiagonals(diagonalA, diagonalB);
+                    side = Math.sqrt((diagonalA * diagonalA / 4) + (diagonalB * diagonalB / 4));
+                    angleRad = 2 * Math.atan2(diagonalA, diagonalB);
                     break;
+                default:
+                    continue;
             }
+            return new Rhombus(side, angleRad);
         }
-        return rhombus;
     }
 }
