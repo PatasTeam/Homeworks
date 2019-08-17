@@ -1,11 +1,19 @@
 package org.patas.shapes;
 
+import java.util.Scanner;
+
 public class Circle extends Shape {
     private double radius;
 
-    public Circle(double radius) {
+    private Circle(double radius) {
         super("Circle");
         this.radius = radius;
+    }
+
+    static Circle askForCircle(Scanner sc) {
+        System.out.println("How long is its radius?");
+        double radius = sc.nextDouble();
+        return new Circle(radius);
     }
 
     @Override
