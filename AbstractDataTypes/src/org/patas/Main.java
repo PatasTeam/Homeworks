@@ -20,15 +20,17 @@ public class Main {
     }
 
     private static Shape askForShape(Scanner sc) {
-        Shape shape;
+        Shape shape = null;
         int sOption;
-        do {
+        while (shape == null){
             System.out.println("Choose a shape (enter 0 to exit):");
             System.out.println("    1) Parallelogram");
             System.out.println("    2) Circle");
             System.out.println("    3) Triangle");
             sOption = sc.nextInt();
             switch (sOption) {
+                case 0:
+                    System.exit(0);
                 case 1:
                     shape = askForParallelogram(sc);
                     break;
@@ -40,11 +42,8 @@ public class Main {
                 case 3:
                     shape = askForTriangle(sc);
                     break;
-                default:
-                    shape = null;
-                    System.exit(0);
             }
-        } while (shape == null);
+        }
         return shape;
     }
 
@@ -80,7 +79,7 @@ public class Main {
                     sideA = sc.nextDouble();
                     System.out.println("Side B: ");
                     sideB = sc.nextDouble();
-                    System.out.println("Angle between A,B: ");
+                    System.out.println("Angle between A,B (degrees): ");
                     double angle = sc.nextDouble();
                     parallelogram = new Rhomboid(sideA, sideB, angle);
                     break;

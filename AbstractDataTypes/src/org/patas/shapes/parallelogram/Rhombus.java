@@ -6,14 +6,13 @@ public class Rhombus extends Parallelogram {
         super("Rhombus", side, side, angle);
     }
 
-    // Cambiar
     public static Rhombus newRhombusByAngleInDegrees(double side, double angle) {
         return new Rhombus(side, Math.toRadians(angle));
     }
 
     public static Rhombus newRhombusByDiagonals(double diagonalA, double diagonalB) {
-        double side = Math.sqrt((diagonalA * diagonalA / 4) * (diagonalB * diagonalB / 4));
-        double angle = Math.atan2(diagonalA, diagonalB);
+        double side = Math.sqrt((diagonalA * diagonalA / 4) + (diagonalB * diagonalB / 4));
+        double angle = 2 * Math.atan2(diagonalA, diagonalB);
         return new Rhombus(side, angle);
     }
 }
