@@ -8,21 +8,26 @@ import org.patas.shapes.triangle.*;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Shape shape = askForShape(sc);
-        askForCalculation(sc, shape);
+        while (shape != null) {
+            askForCalculation(sc, shape);
+            shape = askForShape(sc);
+        }
         sc.close();
     }
 
     private static Shape askForShape(Scanner sc) {
-        Shape shape = null;
-        while (shape == null) {
-            System.out.println("Choose a shape:");
+        Shape shape;
+        int sOption;
+        do {
+            System.out.println("Choose a shape (enter 0 to exit):");
             System.out.println("    1) Parallelogram");
             System.out.println("    2) Circle");
             System.out.println("    3) Triangle");
-            int sOption = sc.nextInt();
+            sOption = sc.nextInt();
             switch (sOption) {
                 case 1:
                     shape = askForParallelogram(sc);
@@ -35,19 +40,25 @@ public class Main {
                 case 3:
                     shape = askForTriangle(sc);
                     break;
+                default:
+                    shape = null;
+                    System.exit(0);
             }
-        }
+        } while (shape == null);
         return shape;
     }
 
     private static Parallelogram askForParallelogram(Scanner sc) {
         Parallelogram parallelogram = null;
+        double sideA, sideB;
+        int sOption;
         while (parallelogram == null) {
             System.out.println("Choose a parallelogram:");
             System.out.println("    1) Square");
             System.out.println("    2) Rectangle");
             System.out.println("    3) Rhombus");
-            int sOption = sc.nextInt();
+            System.out.println("    4) Rhomboid");
+            sOption = sc.nextInt();
             switch (sOption) {
                 case 1:
                     System.out.println("How long is its side?");
@@ -56,15 +67,24 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("How long is one side?");
-                    double sideA = sc.nextDouble();
+                    sideA = sc.nextDouble();
                     System.out.println("And the other one?");
-                    double sideB = sc.nextDouble();
+                    sideB = sc.nextDouble();
                     parallelogram = new Rectangle(sideA, sideB);
                     break;
                 case 3:
                     parallelogram = askForRhombusInfo(sc);
                     break;
-            }
+                case 4:
+                    System.out.println("Side A: ");
+                    sideA = sc.nextDouble();
+                    System.out.println("Side B: ");
+                    sideB = sc.nextDouble();
+                    System.out.println("Angle between A,B: ");
+                    double angle = sc.nextDouble();
+                    parallelogram = new Rhomboid(sideA, sideB, angle);
+                    break;
+            } 
         }
         return parallelogram;
     }
@@ -106,12 +126,13 @@ public class Main {
 
     private static Triangle askForTriangle(Scanner sc) {
         Triangle triangle = null;
+        int sOption;
         while (triangle == null) {
             System.out.println("Choose a triangle:");
             System.out.println("    1) Equilateral triangle");
             System.out.println("    2) Isosceles triangle");
             System.out.println("    3) Scalene triangle");
-            int sOption = sc.nextInt();
+            sOption = sc.nextInt();
             switch (sOption) {
                 case 1:
                     System.out.println("How long is its side?");
@@ -156,4 +177,5 @@ public class Main {
             }
         } while (calculation != 0);
     }
+    
 }

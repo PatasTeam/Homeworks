@@ -5,7 +5,7 @@ import org.patas.shapes.Shape;
 public abstract class Triangle extends Shape {
     private double[] sides;
 
-    Triangle(String name, double side1, double side2, double side3) {
+    public Triangle(String name, double side1, double side2, double side3) {
         super(name);
         sides = new double[] {side1, side2, side3};
     }
