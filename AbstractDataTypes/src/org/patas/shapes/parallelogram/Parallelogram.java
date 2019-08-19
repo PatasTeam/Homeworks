@@ -14,32 +14,6 @@ public abstract class Parallelogram extends Shape {
         this.angleRad = angleRad;
     }
 
-    public static Parallelogram askForParallelogram(Scanner sc) {
-        Parallelogram parallelogram = null;
-        while (parallelogram == null) {
-            System.out.println("Choose a parallelogram:");
-            System.out.println("    1) Square");
-            System.out.println("    2) Rectangle");
-            System.out.println("    3) Rhombus");
-            System.out.println("    4) Rhomboid");
-            switch (sc.nextInt()) {
-                case 1:
-                    parallelogram = Square.askForSquare(sc);
-                    break;
-                case 2:
-                    parallelogram = Rectangle.askForRectangle(sc);
-                    break;
-                case 3:
-                    parallelogram = Rhombus.askForRhombus(sc);
-                    break;
-                case 4:
-                    parallelogram = Rhomboid.askForRhomboid(sc);
-                    break;
-            }
-        }
-        return parallelogram;
-    }
-
     @Override
     public double calcArea() {
         return sideA * sideB * Math.sin(angleRad);
@@ -48,5 +22,25 @@ public abstract class Parallelogram extends Shape {
     @Override
     public double calcPerimeter() {
         return 2 * (sideA + sideB);
+    }
+
+    public static Parallelogram askForParallelogram(Scanner sc) {
+        while (true) {
+            System.out.println("Choose a parallelogram:");
+            System.out.println("    1) Square");
+            System.out.println("    2) Rectangle");
+            System.out.println("    3) Rhombus");
+            System.out.println("    4) Rhomboid");
+            switch (sc.nextInt()) {
+                case 1:
+                    return Square.askForSquare(sc);
+                case 2:
+                    return Rectangle.askForRectangle(sc);
+                case 3:
+                    return Rhombus.askForRhombus(sc);
+                case 4:
+                    return Rhomboid.askForRhomboid(sc);
+            }
+        }
     }
 }
