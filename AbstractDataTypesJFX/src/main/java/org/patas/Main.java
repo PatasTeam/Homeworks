@@ -16,7 +16,7 @@ public class Main extends Application {
         LeftBox leftBox = new LeftBox(rightBox);
 
         HBox root = new HBox(leftBox, new Separator(Orientation.VERTICAL), rightBox);
-        root.setPrefSize(800.0, 400.0);
+        root.setPrefSize(800.0, 450.0);
         stage.setScene(new Scene(root));
         stage.setTitle("Area and Perimeter Calculator");
         stage.show();

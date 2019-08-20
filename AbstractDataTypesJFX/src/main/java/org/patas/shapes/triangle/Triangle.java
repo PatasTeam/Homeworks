@@ -22,21 +22,21 @@ public abstract class Triangle extends Shape {
         RadioButton equilateralRB = new RadioButton("Equilateral");
         equilateralRB.setToggleGroup(triangleGroup);
         equilateralRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
+            left.replaceHBox(2);
             // TODO: Add Equilateral.setRightPane()
         });
         result.add(equilateralRB);
         RadioButton isoscelesRB = new RadioButton("Isosceles");
         isoscelesRB.setToggleGroup(triangleGroup);
         isoscelesRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
+            left.replaceHBox(2);
             // TODO: Add Isosceles.setRightPane()
         });
         result.add(isoscelesRB);
         RadioButton scaleneRB = new RadioButton("Scalene");
         scaleneRB.setToggleGroup(triangleGroup);
         scaleneRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
+            left.replaceHBox(2);
             // TODO: Add Scalene.setRightPane()
         });
         result.add(scaleneRB);

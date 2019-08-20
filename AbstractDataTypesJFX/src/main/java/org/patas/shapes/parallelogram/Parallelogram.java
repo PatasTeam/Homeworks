@@ -24,30 +24,28 @@ public abstract class Parallelogram extends Shape {
         RadioButton squareRB = new RadioButton("Square");
         squareRB.setToggleGroup(triangleGroup);
         squareRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
+            left.replaceHBox(2);
             // TODO: Add Square.setRightPane()
         });
         result.add(squareRB);
         RadioButton rectangleRB = new RadioButton("Rectangle");
         rectangleRB.setToggleGroup(triangleGroup);
         rectangleRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
+            left.replaceHBox(2);
             // TODO: Add Rectangle.setRightPane()
         });
         result.add(rectangleRB);
         RadioButton rhombusRB = new RadioButton("Rhombus");
         rhombusRB.setToggleGroup(triangleGroup);
-        rhombusRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
-            left.getPane(2).getChildren().addAll(Rhombus.getOptions(left, right));
-        });
+        rhombusRB.setOnAction(event ->
+            left.replaceHBox(2, Rhombus.getOptions(left, right))
+        );
         result.add(rhombusRB);
         RadioButton rhomboidRB = new RadioButton("Rhomboid");
         rhomboidRB.setToggleGroup(triangleGroup);
-        rhomboidRB.setOnAction(event -> {
-            left.clearDownFromIndex(2);
-            left.getPane(2).getChildren().addAll(Rhomboid.getOptions(left, right));
-        });
+        rhomboidRB.setOnAction(event ->
+            left.replaceHBox(2, Rhomboid.getOptions(left, right))
+        );
         result.add(rhomboidRB);
         return result;
     }

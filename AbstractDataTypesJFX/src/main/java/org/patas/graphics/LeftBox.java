@@ -1,17 +1,20 @@
 package org.patas.graphics;
 
 import javafx.geometry.Orientation;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
 import org.patas.shapes.Shape;
+
+import java.util.ArrayList;
 
 public class LeftBox extends VBox {
     private StyledHBox[] panes;
 
     public LeftBox(RightBox rightBox) {
         super();
-        this.setPrefSize(500.0, 400.0);
-        panes = new StyledHBox[4];
+        this.setPrefSize(500.0, 450.0);
+        panes = new StyledHBox[3];
         panes[0] = new StyledHBox();
         panes[0].getChildren().addAll(Shape.getOptions(this, rightBox));
         this.getChildren().add(panes[0]);
@@ -21,12 +24,13 @@ public class LeftBox extends VBox {
         }
     }
 
-    public StyledHBox getPane(int index) {
-        return panes[index];
-    }
-
-    public void clearDownFromIndex(int index) {
+    public void replaceHBox(int index) {
         for (int i = index; i < panes.length; i++)
             panes[i].getChildren().clear();
+    }
+
+    public void replaceHBox(int index, ArrayList<RadioButton> children) {
+        this.replaceHBox(index);
+        this.panes[index].getChildren().addAll(children);
     }
 }

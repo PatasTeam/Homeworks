@@ -1,13 +1,24 @@
 package org.patas.shapes;
 
-import java.util.Scanner;
+import javafx.scene.control.Label;
+import org.patas.graphics.RightBox;
+
+import java.util.ArrayList;
 
 public class Circle extends Shape {
     private double radius;
 
-    private Circle(double radius) {
+    public Circle(double radius) {
         super("Circle");
         this.radius = radius;
+    }
+
+    static void setRightPane(RightBox right) {
+        ArrayList<Label> labels = new ArrayList<>();
+        Label radius = new Label("Radius");
+        labels.add(radius);
+        right.replaceTopPanel(labels);
+        right.setShapeConstructor(Circle.class.getDeclaredConstructors()[0]);
     }
 
     @Override

@@ -18,21 +18,18 @@ class Rhombus extends Parallelogram {
         RadioButton angleRadRB = new RadioButton("Side length and\nangle in radians");
         angleRadRB.setToggleGroup(triangleGroup);
         angleRadRB.setOnAction(event -> {
-            left.clearDownFromIndex(3);
             // TODO: Add Rhombus.setRightPaneWithRadians()
         });
         result.add(angleRadRB);
         RadioButton angleDegRB = new RadioButton("Side length and\nangle in degrees");
         angleDegRB.setToggleGroup(triangleGroup);
         angleDegRB.setOnAction(event -> {
-            left.clearDownFromIndex(3);
             // TODO: Add Rhombus.setRightPaneWithDegrees()
         });
         result.add(angleDegRB);
         RadioButton diagonalsRB = new RadioButton("Length of diagonals");
         diagonalsRB.setToggleGroup(triangleGroup);
         diagonalsRB.setOnAction(event -> {
-            left.clearDownFromIndex(3);
             // TODO: Add Rhombus.setRightPaneWithDiagonals()
         });
         result.add(diagonalsRB);

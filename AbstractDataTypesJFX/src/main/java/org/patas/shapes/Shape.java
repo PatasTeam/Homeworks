@@ -22,26 +22,28 @@ public abstract class Shape implements ShapeOperations {
         RadioButton circleRB = new RadioButton("Circle");
         circleRB.setToggleGroup(shapeGroup);
         circleRB.setOnAction(event -> {
-            left.clearDownFromIndex(1);
-            // TODO: Add Circle.setRightPane()
+            left.replaceHBox(1);
+            Circle.setRightPane(right);
         });
         result.add(circleRB);
         RadioButton triangleRB = new RadioButton("Triangle");
         triangleRB.setToggleGroup(shapeGroup);
-        triangleRB.setOnAction(event -> {
-            left.clearDownFromIndex(1);
-            left.getPane(1).getChildren().addAll(Triangle.getOptions(left, right));
-        });
+        triangleRB.setOnAction(event ->
+            left.replaceHBox(1, Triangle.getOptions(left, right))
+        );
         result.add(triangleRB);
         RadioButton parallelogramRB = new RadioButton("Parallelogram");
         parallelogramRB.setToggleGroup(shapeGroup);
-        parallelogramRB.setOnAction(event -> {
-            left.clearDownFromIndex(1);
-            left.getPane(1).getChildren().addAll(Parallelogram.getOptions(left, right));
-        });
+        parallelogramRB.setOnAction(event ->
+            left.replaceHBox(1, Parallelogram.getOptions(left, right))
+        );
         result.add(parallelogramRB);
         RadioButton polygonRB = new RadioButton("Polygon");
         polygonRB.setToggleGroup(shapeGroup);
+        polygonRB.setOnAction(event -> {
+            // TODO: Add Polygon.getOptions as argument
+            left.replaceHBox(1);
+        });
         result.add(polygonRB);
         return result;
     }

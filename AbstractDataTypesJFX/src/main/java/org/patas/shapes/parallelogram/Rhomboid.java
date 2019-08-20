@@ -18,14 +18,12 @@ class Rhomboid extends Parallelogram {
         RadioButton angleRadRB = new RadioButton("Side lengths and\nangle in radians");
         angleRadRB.setToggleGroup(triangleGroup);
         angleRadRB.setOnAction(event -> {
-            left.clearDownFromIndex(3);
             // TODO: Add Rhomboid.setRightPaneWithRadians()
         });
         result.add(angleRadRB);
         RadioButton angleDegRB = new RadioButton("Side lengths and\nangle in degrees");
         angleDegRB.setToggleGroup(triangleGroup);
         angleDegRB.setOnAction(event -> {
-            left.clearDownFromIndex(3);
             // TODO: Add Rhomboid.setRightPaneWithDegrees()
         });
         result.add(angleDegRB);
