@@ -1,5 +1,6 @@
 package org.patas.shapes.parallelogram;
 
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.patas.graphics.LeftBox;
@@ -17,16 +18,31 @@ class Rhomboid extends Parallelogram {
         ArrayList<RadioButton> result = new ArrayList<>();
         RadioButton angleRadRB = new RadioButton("Side lengths and\nangle in radians");
         angleRadRB.setToggleGroup(triangleGroup);
-        angleRadRB.setOnAction(event -> {
-            // TODO: Add Rhomboid.setRightPaneWithRadians()
-        });
+        angleRadRB.setOnAction(event -> Rhomboid.setRightPaneWithRadians(right));
         result.add(angleRadRB);
         RadioButton angleDegRB = new RadioButton("Side lengths and\nangle in degrees");
         angleDegRB.setToggleGroup(triangleGroup);
-        angleDegRB.setOnAction(event -> {
-            // TODO: Add Rhomboid.setRightPaneWithDegrees()
-        });
+        angleDegRB.setOnAction(event -> Rhomboid.setRightPaneWithDegrees(right));
         result.add(angleDegRB);
         return result;
+    }
+
+    private static void setRightPaneWithRadians(RightBox right) {
+        ArrayList<Label> labels = new ArrayList<>();
+        labels.add(new Label("Side A"));
+        labels.add(new Label("Side B"));
+        labels.add(new Label("Angle in radians"));
+        right.replaceTopPanel(labels);
+        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+    }
+
+    private static void setRightPaneWithDegrees(RightBox right) {
+        ArrayList<Label> labels = new ArrayList<>();
+        labels.add(new Label("Side A"));
+        labels.add(new Label("Side B"));
+        labels.add(new Label("Angle in degrees"));
+        right.replaceTopPanel(labels);
+        // TODO: pass another constructor or find a way to fix this
+        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
     }
 }

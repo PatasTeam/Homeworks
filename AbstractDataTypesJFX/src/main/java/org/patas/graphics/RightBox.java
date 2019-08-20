@@ -25,7 +25,7 @@ public class RightBox extends VBox {
         this.setPrefSize(300.0, 450.0);
         topPanel = new VBox(10.0);
         topPanel.setAlignment(Pos.CENTER);
-        topPanel.setPrefHeight(200.0);
+        topPanel.setPrefHeight(250.0);
         topPanel.setPadding(new Insets(10.0));
 
         VBox bottomPanel = setupBottomPanel();

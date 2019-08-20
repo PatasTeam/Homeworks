@@ -15,8 +15,7 @@ public class Circle extends Shape {
 
     static void setRightPane(RightBox right) {
         ArrayList<Label> labels = new ArrayList<>();
-        Label radius = new Label("Radius");
-        labels.add(radius);
+        labels.add(new Label("Radius"));
         right.replaceTopPanel(labels);
         right.setShapeConstructor(Circle.class.getDeclaredConstructors()[0]);
     }
