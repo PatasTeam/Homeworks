@@ -5,6 +5,7 @@ import javafx.scene.control.ToggleGroup;
 import org.patas.graphics.LeftBox;
 import org.patas.graphics.RightBox;
 import org.patas.shapes.parallelogram.Parallelogram;
+import org.patas.shapes.polygon.Polygon;
 import org.patas.shapes.triangle.Triangle;
 
 import java.util.ArrayList;
@@ -40,10 +41,9 @@ public abstract class Shape implements ShapeOperations {
         result.add(parallelogramRB);
         RadioButton polygonRB = new RadioButton("Polygon");
         polygonRB.setToggleGroup(shapeGroup);
-        polygonRB.setOnAction(event -> {
-            // TODO: Add Polygon.getOptions as argument
-            left.replaceHBox(1);
-        });
+        polygonRB.setOnAction(event ->
+                left.replaceHBox(1, Polygon.getOptions(left, right))
+        );
         result.add(polygonRB);
         return result;
     }

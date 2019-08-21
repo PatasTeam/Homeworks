@@ -54,7 +54,7 @@ public class RightBox extends VBox {
         HBox buttons = new HBox(10.0, calcArea, calcPeri);
         buttons.setPrefSize(300.0, 100.0);
         buttons.setAlignment(Pos.CENTER);
-        resultLabel = new Label("Result: 100000");
+        resultLabel = new Label("");
         VBox bottomPanel = new VBox(buttons, resultLabel);
         bottomPanel.setAlignment(Pos.TOP_CENTER);
         return bottomPanel;
