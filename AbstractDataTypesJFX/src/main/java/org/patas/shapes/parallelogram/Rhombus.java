@@ -36,7 +36,7 @@ class Rhombus extends Parallelogram {
         labels.add(new Label("Side length"));
         labels.add(new Label("Angle in radians"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Rhombus(args[0], args[1]));
     }
 
     private static void setRightPaneWithDegrees(RightBox right) {
@@ -44,8 +44,7 @@ class Rhombus extends Parallelogram {
         labels.add(new Label("Side length"));
         labels.add(new Label("Angle in degrees"));
         right.replaceTopPanel(labels);
-        // TODO: pass another constructor or find a way to fix this
-        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Rhombus(args[0], Math.toRadians(args[1])));
     }
 
     private static void setRightPaneWithDiagonals(RightBox right) {
@@ -53,7 +52,10 @@ class Rhombus extends Parallelogram {
         labels.add(new Label("Diagonal 1"));
         labels.add(new Label("Diagonal 2"));
         right.replaceTopPanel(labels);
-        // TODO: pass another constructor or find a way to fix this
-        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> {
+            double side = Math.sqrt((args[0] * args[0] / 4) + (args[1] * args[1] / 4));
+            double angleRad = 2 * Math.atan2(args[0], args[1]);
+            return new Rhombus(side, angleRad);
+        });
     }
 }

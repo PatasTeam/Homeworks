@@ -33,7 +33,7 @@ class Rhomboid extends Parallelogram {
         labels.add(new Label("Side B"));
         labels.add(new Label("Angle in radians"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Rhomboid(args[0], args[1], args[2]));
     }
 
     private static void setRightPaneWithDegrees(RightBox right) {
@@ -42,7 +42,6 @@ class Rhomboid extends Parallelogram {
         labels.add(new Label("Side B"));
         labels.add(new Label("Angle in degrees"));
         right.replaceTopPanel(labels);
-        // TODO: pass another constructor or find a way to fix this
-        right.setShapeConstructor(Rhomboid.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Rhomboid(args[0], args[1], Math.toRadians(args[2])));
     }
 }

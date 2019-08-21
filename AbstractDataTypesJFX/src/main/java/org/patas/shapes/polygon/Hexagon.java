@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class Hexagon extends Polygon {
-    public Hexagon(double side) {
+class Hexagon extends Polygon {
+    private Hexagon(double side) {
         super("Hexagon", 6, side);
     }
 
@@ -14,6 +14,6 @@ public class Hexagon extends Polygon {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Hexagon.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Hexagon(args[0]));
     }
 }

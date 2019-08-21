@@ -11,14 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.patas.shapes.Shape;
+import org.patas.shapes.ShapeFactory;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class RightBox extends VBox {
     private VBox topPanel;
-    private Constructor shapeConstructor;
+    private ShapeFactory shapeFactory;
     private Label resultLabel;
 
     public RightBox() {
@@ -27,31 +26,22 @@ public class RightBox extends VBox {
         topPanel.setAlignment(Pos.CENTER);
         topPanel.setPrefHeight(250.0);
         topPanel.setPadding(new Insets(10.0));
-
         VBox bottomPanel = setupBottomPanel();
         this.getChildren().addAll(topPanel, new Separator(Orientation.HORIZONTAL), bottomPanel);
     }
 
     private VBox setupBottomPanel() {
-        Button calcArea = new Button("Calculate Area");
-        calcArea.setOnAction(event -> {
-            try {
-                Shape shape = (Shape) shapeConstructor.newInstance(getConstructorArgs());
-                resultLabel.setText("Area: " + shape.calcArea());
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
+        Button calcAreaBtn = new Button("Calculate Area");
+        calcAreaBtn.setOnAction(event -> {
+            Shape shape = shapeFactory.createShape(getConstructorArgs());
+            resultLabel.setText("Area: " + shape.calcArea());
         });
-        Button calcPeri = new Button("Calculate Perimeter");
-        calcPeri.setOnAction(event -> {
-            try {
-                Shape shape = (Shape) shapeConstructor.newInstance(getConstructorArgs());
-                resultLabel.setText("Perimeter: " + shape.calcPerimeter());
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                e.printStackTrace();
-            }
+        Button calcPerimeterBtn = new Button("Calculate Perimeter");
+        calcPerimeterBtn.setOnAction(event -> {
+            Shape shape = shapeFactory.createShape(getConstructorArgs());
+            resultLabel.setText("Perimeter: " + shape.calcPerimeter());
         });
-        HBox buttons = new HBox(10.0, calcArea, calcPeri);
+        HBox buttons = new HBox(10.0, calcAreaBtn, calcPerimeterBtn);
         buttons.setPrefSize(300.0, 100.0);
         buttons.setAlignment(Pos.CENTER);
         resultLabel = new Label("");
@@ -60,11 +50,11 @@ public class RightBox extends VBox {
         return bottomPanel;
     }
 
-    private Object[] getConstructorArgs() {
-        ArrayList<Object> result = new ArrayList<>();
+    private double[] getConstructorArgs() {
+        ArrayList<Double> result = new ArrayList<>();
         for (Node node: topPanel.getChildren().filtered(node -> node.getClass().equals(TextField.class)))
             result.add(Double.parseDouble(((TextField) node).getText()));
-        return result.toArray();
+        return result.stream().mapToDouble(Double::doubleValue).toArray();
     }
 
     public void replaceTopPanel(ArrayList<Label> children) {
@@ -82,7 +72,7 @@ public class RightBox extends VBox {
         }
     }
 
-    public void setShapeConstructor(Constructor shapeConstructor) {
-        this.shapeConstructor = shapeConstructor;
+    public void setShapeFactory(ShapeFactory shapeFactory) {
+        this.shapeFactory = shapeFactory;
     }
 }

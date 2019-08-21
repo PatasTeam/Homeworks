@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Circle extends Shape {
     private double radius;
 
-    public Circle(double radius) {
+    private Circle(double radius) {
         super("Circle");
         this.radius = radius;
     }
@@ -17,7 +17,7 @@ public class Circle extends Shape {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Radius"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Circle.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Circle(args[0]));
     }
 
     @Override

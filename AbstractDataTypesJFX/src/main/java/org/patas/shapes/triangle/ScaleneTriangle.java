@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class ScaleneTriangle extends Triangle {
-    public ScaleneTriangle(double side1, double side2, double side3) {
+class ScaleneTriangle extends Triangle {
+    private ScaleneTriangle(double side1, double side2, double side3) {
         super("Scalene Triangle", side1, side2, side3);
     }
 
@@ -16,6 +16,6 @@ public class ScaleneTriangle extends Triangle {
         labels.add(new Label("Side B"));
         labels.add(new Label("Side C"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(ScaleneTriangle.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new ScaleneTriangle(args[0], args[1], args[2]));
     }
 }

@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class Pentagon extends Polygon {
-    public Pentagon(double side) {
+class Pentagon extends Polygon {
+    private Pentagon(double side) {
         super("Pentagon", 5, side);
     }
 
@@ -14,6 +14,6 @@ public class Pentagon extends Polygon {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Pentagon.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Pentagon(args[0]));
     }
 }

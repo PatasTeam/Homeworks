@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class IsoscelesTriangle extends Triangle {
-    public IsoscelesTriangle(double base, double equalSides) {
+class IsoscelesTriangle extends Triangle {
+    private IsoscelesTriangle(double base, double equalSides) {
         super("Isosceles Triangle", base, equalSides, equalSides);
     }
 
@@ -15,7 +15,7 @@ public class IsoscelesTriangle extends Triangle {
         labels.add(new Label("Base"));
         labels.add(new Label("Equal sides"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(IsoscelesTriangle.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new IsoscelesTriangle(args[0], args[1]));
     }
 
 }

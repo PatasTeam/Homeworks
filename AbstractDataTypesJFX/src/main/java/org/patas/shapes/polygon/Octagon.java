@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class Octagon extends Polygon {
-    public Octagon(double side) {
+class Octagon extends Polygon {
+    private Octagon(double side) {
         super("Octagon", 8, side);
     }
 
@@ -14,6 +14,6 @@ public class Octagon extends Polygon {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(Octagon.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new Octagon(args[0]));
     }
 }

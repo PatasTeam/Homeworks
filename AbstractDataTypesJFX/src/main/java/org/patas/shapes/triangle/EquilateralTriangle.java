@@ -5,8 +5,8 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
-public class EquilateralTriangle extends Triangle {
-    public EquilateralTriangle(double side) {
+class EquilateralTriangle extends Triangle {
+    private EquilateralTriangle(double side) {
         super("Equilateral Triangle", side, side, side);
     }
 
@@ -14,6 +14,6 @@ public class EquilateralTriangle extends Triangle {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
         right.replaceTopPanel(labels);
-        right.setShapeConstructor(EquilateralTriangle.class.getDeclaredConstructors()[0]);
+        right.setShapeFactory(args -> new EquilateralTriangle(args[0]));
     }
 }
