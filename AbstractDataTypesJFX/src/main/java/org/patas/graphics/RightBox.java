@@ -14,6 +14,8 @@ import org.patas.shapes.Shape;
 import org.patas.shapes.ShapeFactory;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RightBox extends VBox {
     private VBox topPanel;
@@ -62,11 +64,9 @@ public class RightBox extends VBox {
         for (Label child : children) {
             TextField tf = new TextField();
             tf.textProperty().addListener((observable, oldValue, newValue) -> {
-                try {
-                    Double.parseDouble(newValue);
-                } catch (NumberFormatException e) {
-                    tf.setText(oldValue);
-                }
+                if (newValue.equals("")) return;
+                Matcher matcher = Pattern.compile("(\\d+\\.?\\d*)").matcher(newValue);
+                tf.setText((matcher.matches()) ? matcher.group(0) : oldValue);
             });
             topPanel.getChildren().addAll(child, tf);
         }
