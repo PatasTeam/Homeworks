@@ -2,11 +2,12 @@ package org.patas.shapes.polygon;
 
 import javafx.scene.control.Label;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class Hexagon extends Polygon {
-    private Hexagon(double side) {
+    private Hexagon(double side) throws InvalidShapeException {
         super("Hexagon", 6, side);
     }
 

@@ -2,11 +2,12 @@ package org.patas.shapes.triangle;
 
 import javafx.scene.control.Label;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class ScaleneTriangle extends Triangle {
-    private ScaleneTriangle(double side1, double side2, double side3) {
+    private ScaleneTriangle(double side1, double side2, double side3) throws InvalidShapeException {
         super("Scalene Triangle", side1, side2, side3);
     }
 

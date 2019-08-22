@@ -5,11 +5,12 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.patas.graphics.LeftBox;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class Rhomboid extends Parallelogram {
-    private Rhomboid(double sideA, double sideB, double angleRad) {
+    private Rhomboid(double sideA, double sideB, double angleRad) throws InvalidShapeException {
         super("Rhomboid", sideA, sideB, angleRad);
     }
 

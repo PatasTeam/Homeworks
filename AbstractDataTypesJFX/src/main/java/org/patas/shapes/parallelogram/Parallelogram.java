@@ -4,6 +4,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.patas.graphics.LeftBox;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 import org.patas.shapes.Shape;
 
 import java.util.ArrayList;
@@ -11,8 +12,10 @@ import java.util.ArrayList;
 public abstract class Parallelogram extends Shape {
     private double sideA, sideB, angleRad;
 
-    Parallelogram(String name, double sideA, double sideB, double angleRad) {
+    Parallelogram(String name, double sideA, double sideB, double angleRad) throws InvalidShapeException {
         super(name);
+        if (sideA == 0 || sideB == 0) throw new InvalidShapeException("Side length can't be zero");
+        if (angleRad == 0) throw new InvalidShapeException("Angle can't be zero");
         this.sideA = sideA;
         this.sideB = sideB;
         this.angleRad = angleRad;

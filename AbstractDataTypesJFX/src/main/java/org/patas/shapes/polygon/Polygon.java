@@ -4,6 +4,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.patas.graphics.LeftBox;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 import org.patas.shapes.Shape;
 
 import java.util.ArrayList;
@@ -12,8 +13,9 @@ public abstract class Polygon extends Shape {
     private int numSides;
     private double side;
 
-    Polygon(String name, int numSides, double side) {
+    Polygon(String name, int numSides, double side) throws InvalidShapeException {
         super(name);
+        if (side == 0) throw new InvalidShapeException("Side length can't be zero");
         this.side = side;
         this.numSides = numSides;
     }

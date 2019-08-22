@@ -2,11 +2,12 @@ package org.patas.shapes.polygon;
 
 import javafx.scene.control.Label;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class Octagon extends Polygon {
-    private Octagon(double side) {
+    private Octagon(double side) throws InvalidShapeException {
         super("Octagon", 8, side);
     }
 

@@ -10,6 +10,8 @@ import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import org.patas.shapes.Shape;
 import org.patas.shapes.ShapeFactory;
 
@@ -20,7 +22,7 @@ import java.util.regex.Pattern;
 public class RightBox extends VBox {
     private VBox topPanel;
     private ShapeFactory shapeFactory;
-    private Label resultLabel;
+    private Label resultLbl, errorLbl;
 
     public RightBox() {
         this.setPrefSize(300.0, 450.0);
@@ -35,19 +37,34 @@ public class RightBox extends VBox {
     private VBox setupBottomPanel() {
         Button calcAreaBtn = new Button("Calculate Area");
         calcAreaBtn.setOnAction(event -> {
-            Shape shape = shapeFactory.createShape(getConstructorArgs());
-            resultLabel.setText("Area: " + shape.calcArea());
+            try {
+                Shape shape = shapeFactory.createShape(getConstructorArgs());
+                resultLbl.setText("Area: " + shape.calcArea());
+                errorLbl.setText("");
+            } catch (Exception e) {
+                resultLbl.setText("");
+                errorLbl.setText(e.getClass().getSimpleName() + "\n" + e.getMessage());
+            }
         });
         Button calcPerimeterBtn = new Button("Calculate Perimeter");
         calcPerimeterBtn.setOnAction(event -> {
-            Shape shape = shapeFactory.createShape(getConstructorArgs());
-            resultLabel.setText("Perimeter: " + shape.calcPerimeter());
+            try {
+                Shape shape = shapeFactory.createShape(getConstructorArgs());
+                resultLbl.setText("Perimeter: " + shape.calcPerimeter());
+                errorLbl.setText("");
+            } catch (Exception e) {
+                resultLbl.setText("");
+                errorLbl.setText(e.getMessage());
+            }
         });
         HBox buttons = new HBox(10.0, calcAreaBtn, calcPerimeterBtn);
-        buttons.setPrefSize(300.0, 100.0);
         buttons.setAlignment(Pos.CENTER);
-        resultLabel = new Label("");
-        VBox bottomPanel = new VBox(buttons, resultLabel);
+        resultLbl = new Label("");
+        errorLbl = new Label("Not epic");
+        errorLbl.setTextFill(Color.RED);
+        errorLbl.setTextAlignment(TextAlignment.CENTER);
+        VBox bottomPanel = new VBox(15.0, buttons, resultLbl, errorLbl);
+        bottomPanel.setPadding(new Insets(20, 0, 40, 0));
         bottomPanel.setAlignment(Pos.TOP_CENTER);
         return bottomPanel;
     }

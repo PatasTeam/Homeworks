@@ -17,7 +17,10 @@ public class Circle extends Shape {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Radius"));
         right.replaceTopPanel(labels);
-        right.setShapeFactory(args -> new Circle(args[0]));
+        right.setShapeFactory(args -> {
+            if (args[0] == 0) throw new InvalidShapeException("Measure can't be zero");
+            return new Circle(args[0]);
+        });
     }
 
     @Override

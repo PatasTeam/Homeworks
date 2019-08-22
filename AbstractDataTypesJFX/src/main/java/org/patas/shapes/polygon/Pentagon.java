@@ -2,11 +2,12 @@ package org.patas.shapes.polygon;
 
 import javafx.scene.control.Label;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class Pentagon extends Polygon {
-    private Pentagon(double side) {
+    private Pentagon(double side) throws InvalidShapeException {
         super("Pentagon", 5, side);
     }
 

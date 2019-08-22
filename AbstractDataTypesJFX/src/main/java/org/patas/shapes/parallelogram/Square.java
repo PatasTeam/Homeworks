@@ -2,11 +2,12 @@ package org.patas.shapes.parallelogram;
 
 import javafx.scene.control.Label;
 import org.patas.graphics.RightBox;
+import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
 class Square extends Parallelogram {
-    private Square(double side) {
+    private Square(double side) throws InvalidShapeException {
         super("Square", side, side, Math.toRadians(90.0));
     }
 
