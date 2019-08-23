@@ -9,9 +9,20 @@ import org.patas.shapes.Shape;
 
 import java.util.ArrayList;
 
+/**
+ * Abstract class inherited from Shape which contains the methods
+ * to define the radio buttons inside the third horizontal separator
+ * in the left box and to calculate the perimeter and area of the
+ * parallelogram.
+ */
 public abstract class Parallelogram extends Shape {
     private double sideA, sideB, angleRad;
 
+    /**
+     * Class constructor that defines the parallelogram sides and angle.
+     *
+     * @throws InvalidShapeException if the shape is not valid.
+     */
     Parallelogram(String name, double sideA, double sideB, double angleRad) throws InvalidShapeException {
         super(name);
         if (sideA == 0 || sideB == 0) throw new InvalidShapeException("Side length can't be zero");
@@ -21,6 +32,14 @@ public abstract class Parallelogram extends Shape {
         this.angleRad = angleRad;
     }
 
+    /**
+     * Defines the radio buttons inside the second horizontal box
+     * inside the left box and its actions when selected.
+     *
+     * @param left the left box of the stage.
+     * @param right the right box of the stage.
+     * @return list of radio buttons that goes in the second horizontal box.
+     */
     public static ArrayList<RadioButton> getOptions(LeftBox left, RightBox right) {
         ToggleGroup triangleGroup = new ToggleGroup();
         ArrayList<RadioButton> result = new ArrayList<>();
@@ -53,11 +72,21 @@ public abstract class Parallelogram extends Shape {
         return result;
     }
 
+    /**
+     * Calculates the area of the parallelogram.
+     *
+     * @return value of the area.
+     */
     @Override
     public double calcArea() {
         return sideA * sideB * Math.sin(angleRad);
     }
 
+    /**
+     * Calculates the perimeter of the parallelogram.
+     *
+     * @return value of the perimeter.
+     */
     @Override
     public double calcPerimeter() {
         return 2 * (sideA + sideB);

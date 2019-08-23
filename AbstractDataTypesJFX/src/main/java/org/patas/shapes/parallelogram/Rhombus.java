@@ -9,11 +9,32 @@ import org.patas.shapes.InvalidShapeException;
 
 import java.util.ArrayList;
 
+/**
+ * Inherited class from Parallelogram that contains the
+ * methods to define the radio buttons in the third horizontal separator
+ * and to update the right box top pane in base of
+ * the selected radio button in the third horizontal box
+ * of the left box.
+ */
 class Rhombus extends Parallelogram {
+    /**
+     * Class constructor defining the side and angle in radians
+     * of the geometric figure.
+     *
+     * @throws InvalidShapeException if the shape is not valid.
+     */
     private Rhombus(double side, double angleRad) throws InvalidShapeException {
         super("Rhombus", side, side, angleRad);
     }
 
+    /**
+     * Defines the radio buttons inside the third horizontal box
+     * inside the left box and its actions when selected.
+     *
+     * @param left the left box of the stage.
+     * @param right the right box of the stage.
+     * @return list of radio buttons that goes in the third horizontal box.
+     */
     public static ArrayList<RadioButton> getOptions(LeftBox left, RightBox right) {
         ToggleGroup triangleGroup = new ToggleGroup();
         ArrayList<RadioButton> result = new ArrayList<>();
@@ -32,6 +53,15 @@ class Rhombus extends Parallelogram {
         return result;
     }
 
+    /**
+     * Defines the arraylist of labels
+     * of the attributes of the shape
+     * to show the text fields in the top panel
+     * inside the right box if radians option radio
+     * is selected.
+     *
+     * @param right right box of stage.
+     */
     private static void setRightPaneWithRadians(RightBox right) {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
@@ -40,6 +70,15 @@ class Rhombus extends Parallelogram {
         right.setShapeFactory(args -> new Rhombus(args[0], args[1]));
     }
 
+    /**
+     * Defines the arraylist of labels
+     * of the attributes of the shape
+     * to show the text fields in the top panel
+     * inside the right box if degrees option radio
+     * is selected.
+     *
+     * @param right right box of stage.
+     */
     private static void setRightPaneWithDegrees(RightBox right) {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Side length"));
@@ -48,6 +87,15 @@ class Rhombus extends Parallelogram {
         right.setShapeFactory(args -> new Rhombus(args[0], Math.toRadians(args[1])));
     }
 
+    /**
+     * Defines the arraylist of labels
+     * of the attributes of the shape
+     * to show the text fields in the top panel
+     * inside the right box if diagonals option radio
+     * is selected.
+     *
+     * @param right right box of stage.
+     */
     private static void setRightPaneWithDiagonals(RightBox right) {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Diagonal 1"));

@@ -19,11 +19,23 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+* Inherited class from VBox that defines and changes the content
+* inside the right box based on the selected radio element
+* in the left box.
+*/
 public class RightBox extends VBox {
     private VBox topPanel;
     private ShapeFactory shapeFactory;
     private Label resultLbl, errorLbl;
 
+    /**
+     * Class constructor defining the top and bottom
+     * panel of the right box, the top panel containing
+     * the input text boxes and the bottom panel
+     * containing the buttons to calculate area and
+     * perimeter of the figure and below them the result label.
+     */
     public RightBox() {
         this.setPrefSize(300.0, 450.0);
         topPanel = new VBox(10.0);
@@ -34,6 +46,13 @@ public class RightBox extends VBox {
         this.getChildren().addAll(topPanel, new Separator(Orientation.HORIZONTAL), bottomPanel);
     }
 
+    /**
+     * Creates the buttons in the vertical box
+     * inside the right box and defines its action when clicked,
+     * also the result and error labels are created.
+     *
+     * @return The vertical bottom box in the right pane.
+     */
     private VBox setupBottomPanel() {
         Button calcAreaBtn = new Button("Calculate Area");
         calcAreaBtn.setOnAction(event -> {
@@ -69,6 +88,11 @@ public class RightBox extends VBox {
         return bottomPanel;
     }
 
+    /**
+     * Gets the values entered in the text fields.
+     *
+     * @return The values entered in the text fields.
+     */
     private double[] getConstructorArgs() {
         ArrayList<Double> result = new ArrayList<>();
         for (Node node: topPanel.getChildren().filtered(node -> node.getClass().equals(TextField.class)))
@@ -76,6 +100,17 @@ public class RightBox extends VBox {
         return result.stream().mapToDouble(Double::doubleValue).toArray();
     }
 
+    /**
+     * Deletes and creates the text fields in the vertical box inside the right
+     * box based on the children parameter.
+     * <p>
+     * Note: Inside the method is contained a listener that checks if the input
+     * in the text fields matches the int or double format.
+     * </p>
+     *
+     * @param children list containing the labels of the options.
+     * @return Nothing.
+     */
     public void replaceTopPanel(ArrayList<Label> children) {
         topPanel.getChildren().clear();
         for (Label child : children) {
@@ -89,6 +124,12 @@ public class RightBox extends VBox {
         }
     }
 
+    /**
+     * Class setter that defines the shapeFactory attribute.
+     *
+     * @param shapeFactory value to define in the attribute.
+     * @return Nothing.
+     */
     public void setShapeFactory(ShapeFactory shapeFactory) {
         this.shapeFactory = shapeFactory;
     }

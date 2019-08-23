@@ -5,14 +5,34 @@ import org.patas.graphics.RightBox;
 
 import java.util.ArrayList;
 
+/**
+ * Inherited class from Shape that contains the
+ * methods to calculate area and perimeter of the circle
+ * and to update the right box top pane
+ */
 public class Circle extends Shape {
     private double radius;
 
+    /**
+     * Class constructor defining the name and radius
+     * of the geometric figure.
+     */
     private Circle(double radius) {
         super("Circle");
         this.radius = radius;
     }
 
+    /**
+     * Defines the arraylist of labels
+     * of the attributes of the shape
+     * to show the text fields in the top panel
+     * inside the right box.
+     * <p>
+     * Throws InvalidShapeException if radius input is 0.
+     * </p>
+     *
+     * @param right right box of stage.
+     */
     static void setRightPane(RightBox right) {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Radius"));
@@ -23,11 +43,21 @@ public class Circle extends Shape {
         });
     }
 
+    /**
+     * Calculates the area of the circle.
+     *
+     * @return value of the area.
+     */
     @Override
     public double calcArea() {
         return radius * radius * Math.PI;
     }
 
+    /**
+     * Calculates the perimeter of the circle.
+     *
+     * @return value of the perimeter.
+     */
     @Override
     public double calcPerimeter() {
         return 2 * Math.PI * radius;
