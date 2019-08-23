@@ -73,7 +73,7 @@ public class RightBox extends VBox {
                 errorLbl.setText("");
             } catch (Exception e) {
                 resultLbl.setText("");
-                errorLbl.setText(e.getMessage());
+                errorLbl.setText(e.getClass().getSimpleName() + "\n" + e.getMessage());
             }
         });
         HBox buttons = new HBox(10.0, calcAreaBtn, calcPerimeterBtn);
@@ -89,9 +89,9 @@ public class RightBox extends VBox {
     }
 
     /**
-     * Gets the values entered in the text fields.
+     * Parses numbers from TextFields to a double array
      *
-     * @return The values entered in the text fields.
+     * @return a double array with the parameters for the lambda
      */
     private double[] getConstructorArgs() {
         ArrayList<Double> result = new ArrayList<>();
@@ -108,27 +108,25 @@ public class RightBox extends VBox {
      * in the text fields matches the int or double format.
      * </p>
      *
-     * @param children list containing the labels of the options.
-     * @return Nothing.
+     * @param labels ArrayList of labels to add
      */
-    public void replaceTopPanel(ArrayList<Label> children) {
+    public void replaceTopPanel(ArrayList<Label> labels) {
         topPanel.getChildren().clear();
-        for (Label child : children) {
+        for (Label label : labels) {
             TextField tf = new TextField();
             tf.textProperty().addListener((observable, oldValue, newValue) -> {
                 if (newValue.equals("")) return;
                 Matcher matcher = Pattern.compile("(\\d+\\.?\\d*)").matcher(newValue);
                 tf.setText((matcher.matches()) ? matcher.group(0) : oldValue);
             });
-            topPanel.getChildren().addAll(child, tf);
+            topPanel.getChildren().addAll(label, tf);
         }
     }
 
     /**
-     * Class setter that defines the shapeFactory attribute.
-     *
-     * @param shapeFactory value to define in the attribute.
-     * @return Nothing.
+     * Sets a interface to execute the constructor of every shape.
+     * Usually implemented as a lambda function
+     * @param shapeFactory ShapeFactory implementation
      */
     public void setShapeFactory(ShapeFactory shapeFactory) {
         this.shapeFactory = shapeFactory;

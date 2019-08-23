@@ -10,6 +10,9 @@ import javafx.scene.layout.HBox;
 class StyledHBox extends HBox {
     /**
      * Class constructor that defines the style of the horizontal boxes.
+     * Creates an HBox with different default styles
+     *
+     * @param children Nodes to add
      */
     StyledHBox(Node... children) {
         super(20.0, children);

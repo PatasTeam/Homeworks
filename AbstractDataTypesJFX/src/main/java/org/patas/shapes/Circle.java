@@ -16,9 +16,12 @@ public class Circle extends Shape {
     /**
      * Class constructor defining the name and radius
      * of the geometric figure.
+     * 
+     * @throws InvalidShapeException if the shape is not valid.
      */
-    private Circle(double radius) {
+    private Circle(double radius) throws InvalidShapeException {
         super("Circle");
+        if (radius == 0) throw new InvalidShapeException("Radius can't be zero");
         this.radius = radius;
     }
 
@@ -37,10 +40,7 @@ public class Circle extends Shape {
         ArrayList<Label> labels = new ArrayList<>();
         labels.add(new Label("Radius"));
         right.replaceTopPanel(labels);
-        right.setShapeFactory(args -> {
-            if (args[0] == 0) throw new InvalidShapeException("Measure can't be zero");
-            return new Circle(args[0]);
-        });
+        right.setShapeFactory(args -> new Circle(args[0]));
     }
 
     /**

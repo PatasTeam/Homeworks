@@ -33,11 +33,9 @@ public class LeftBox extends VBox {
     }
 
     /**
-     * Clears the content of the selected horizontal box
-     * by its index.
+     * Deletes content on every HBox from index down
      *
-     * @param index The window that contains all javaFX objects.
-     * @return Nothing.
+     * @param index Index of HBox in LeftBox
      */
     public void replaceHBox(int index) {
         for (int i = index; i < panes.length; i++)
@@ -45,13 +43,10 @@ public class LeftBox extends VBox {
     }
 
     /**
-     * Calls the replaceHBox method to clear the content of the
-     * horizontal box selected by its index and defines the new
-     * content based on the previous selected radio buttons.
-     *
-     * @param index index of the horizontal box.
-     * @param children list containing the radioButton options.
-     * @return Nothing.
+     * Deletes content on every HBox from index down
+     * Adds children from ArrayList to HBox at index
+     * @param index Index of HBox in LeftBox
+     * @param children ArrayList of RadioButtons to add
      */
     public void replaceHBox(int index, ArrayList<RadioButton> children) {
         this.replaceHBox(index);
