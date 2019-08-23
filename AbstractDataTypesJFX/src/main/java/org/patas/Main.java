@@ -16,9 +16,9 @@ import org.patas.graphics.RightBox;
 * the area and perimeter of some geometric
 * plane shapes.
 *
-* @author  Mario Emilio Jiménez Vizcaíno
-* @author  Arturo Efrén Jiménez Garibaldy
-* @author  Kevin Torres Martínez
+* @author  Mario Emilio Jiménez Vizcaíno - A01173359
+* @author  Arturo Efrén Jiménez Garibaldy - A00824428
+* @author  Kevin Torres Martínez - A01656257
 * @version 1.0
 * @since   22-08-2019
 */

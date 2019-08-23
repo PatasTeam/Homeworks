@@ -79,7 +79,7 @@ public class RightBox extends VBox {
         HBox buttons = new HBox(10.0, calcAreaBtn, calcPerimeterBtn);
         buttons.setAlignment(Pos.CENTER);
         resultLbl = new Label("");
-        errorLbl = new Label("Not epic");
+        errorLbl = new Label("");
         errorLbl.setTextFill(Color.RED);
         errorLbl.setTextAlignment(TextAlignment.CENTER);
         VBox bottomPanel = new VBox(15.0, buttons, resultLbl, errorLbl);
