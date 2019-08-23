@@ -24,11 +24,22 @@ public class LeftBox extends VBox {
         }
     }
 
+    /**
+     * Deletes content on every HBox from index down
+     *
+     * @param index Index of HBox in LeftBox
+     */
     public void replaceHBox(int index) {
         for (int i = index; i < panes.length; i++)
             panes[i].getChildren().clear();
     }
 
+    /**
+     * Deletes content on every HBox from index down
+     * Adds children from ArrayList to HBox at index
+     * @param index Index of HBox in LeftBox
+     * @param children ArrayList of RadioButtons to add
+     */
     public void replaceHBox(int index, ArrayList<RadioButton> children) {
         this.replaceHBox(index);
         this.panes[index].getChildren().addAll(children);
