@@ -45,16 +45,7 @@ public class Main extends Application {
     }
 
     public void moveStep(Step s) {
-        double progress = 0;
-        switch (s) {
-
-
-            case PREV:
-                progress = towers.prev();
-                break;
-            case NEXT:
-                progress = towers.next();
-        }
+        double progress = s.equals(Step.PREV) ? towers.prev() : towers.next();
         progressBar.setProgress(progress);
     }
 
