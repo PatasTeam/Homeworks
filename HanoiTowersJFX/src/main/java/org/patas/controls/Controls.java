@@ -24,15 +24,6 @@ public class Controls extends HBox {
     }
 
     private void setupNumDisksControls(Main main) {
-        Button plus = new Button("+");
-        plus.setFont(Font.font(24));
-        plus.setPrefSize(54, 50);
-        plus.setOnAction(event -> {
-            main.resetTowers(main.getNumDisks() + 1);
-            numDisksLbl.setText("" + main.getNumDisks());
-        });
-        numDisksLbl = new Label("" + main.getNumDisks());
-        numDisksLbl.setFont(Font.font(24));
         Button minus = new Button("-");
         minus.setFont(Font.font(24));
         minus.setPrefSize(54, 50);
@@ -41,19 +32,28 @@ public class Controls extends HBox {
                 main.resetTowers(main.getNumDisks() - 1);
             numDisksLbl.setText("" + main.getNumDisks());
         });
-        Button reset = new Button("Reset");
-        reset.setFont(Font.font(18));
-        reset.setOnAction(event -> main.resetTowers(main.getNumDisks()));
-        getChildren().addAll(plus, numDisksLbl, minus, reset);
+        numDisksLbl = new Label("" + main.getNumDisks());
+        numDisksLbl.setFont(Font.font(24));
+        Button plus = new Button("+");
+        plus.setFont(Font.font(24));
+        plus.setPrefSize(54, 50);
+        plus.setOnAction(event -> {
+            main.resetTowers(main.getNumDisks() + 1);
+            numDisksLbl.setText("" + main.getNumDisks());
+        });
+        getChildren().addAll(minus, numDisksLbl, plus);
     }
 
     private void setupStepControls(Main main) {
+        Button reset = new Button("Reset");
+        reset.setFont(Font.font(18));
+        reset.setOnAction(event -> main.resetTowers(main.getNumDisks()));
         Button prev = new Button("Previous step");
         prev.setFont(Font.font(18));
-        prev.setOnAction(event -> main.getTowers().prev(main.getProgressBar()));
+        prev.setOnAction(event -> main.moveStep(Main.Step.PREV));
         Button next = new Button("Next step");
         next.setFont(Font.font(18));
-        next.setOnAction(event -> main.getTowers().next(main.getProgressBar()));
-        getChildren().addAll(prev, next);
+        next.setOnAction(event -> main.moveStep(Main.Step.NEXT));
+        getChildren().addAll(reset, prev, next);
     }
 }

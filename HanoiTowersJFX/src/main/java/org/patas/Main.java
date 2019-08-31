@@ -13,7 +13,6 @@ public class Main extends Application {
     private int numDisks = 3;
     private VBox root;
     private Towers towers;
-    private Controls controls;
     private ProgressBar progressBar;
 
     public static void main(String[] args) {
@@ -22,7 +21,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        controls = new Controls(this);
+        Controls controls = new Controls(this);
         progressBar = new ProgressBar(0);
         progressBar.setPrefWidth(700);
         towers = new Towers(numDisks);
@@ -45,11 +44,21 @@ public class Main extends Application {
         return numDisks;
     }
 
-    public Towers getTowers() {
-        return towers;
+    public void moveStep(Step s) {
+        double progress = 0;
+        switch (s) {
+
+
+            case PREV:
+                progress = towers.prev();
+                break;
+            case NEXT:
+                progress = towers.next();
+        }
+        progressBar.setProgress(progress);
     }
 
-    public ProgressBar getProgressBar() {
-        return progressBar;
+    public enum Step {
+        PREV, NEXT
     }
 }

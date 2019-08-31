@@ -1,6 +1,5 @@
 package org.patas.graphics;
 
-import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.HBox;
 import org.patas.Algorithm;
 
@@ -24,19 +23,19 @@ public class Towers extends HBox {
         iterator = steps.listIterator();
     }
 
-    public void next(ProgressBar progressBar) {
-        if (!iterator.hasNext()) return;
+    public double next() {
+        if (!iterator.hasNext()) return 1;
         Algorithm.Step step = iterator.next();
         towers[step.getFrom()].pop();
         towers[step.getTo()].push(step.getDisk());
-        progressBar.setProgress(((double) iterator.nextIndex()) / numSteps);
+        return (double) iterator.nextIndex() / numSteps;
     }
 
-    public void prev(ProgressBar progressBar) {
-        if (!iterator.hasPrevious()) return;
+    public double prev() {
+        if (!iterator.hasPrevious()) return 0;
         Algorithm.Step step = iterator.previous();
         towers[step.getFrom()].push(step.getDisk());
         towers[step.getTo()].pop();
-        progressBar.setProgress(((double) iterator.nextIndex()) / numSteps);
+        return (double) iterator.nextIndex() / numSteps;
     }
 }
