@@ -19,8 +19,8 @@ class Disk extends Rectangle {
         return 80.0 + diskNum * 100.0 / (numDisks - 1);
     }
 
-    private double getHeight(int numDisks) {
-        return Math.min(50.0, 230.0 / numDisks);
+    static double getHeight(int numDisks) {
+        return Math.min(50.0, 270.0 / numDisks);
     }
 
     private Color getColor(int numDisks) {
