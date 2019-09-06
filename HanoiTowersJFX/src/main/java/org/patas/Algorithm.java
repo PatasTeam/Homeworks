@@ -2,7 +2,17 @@ package org.patas;
 
 import java.util.ArrayList;
 
+/**
+ * Recursive algorithm class to solve Hanoi Towers.
+ */
+
 public class Algorithm {
+    /**
+     * Method calls itself and solves for n disks.
+     *
+     * @param disks Number of disks
+     * @return Steps to solve the recursion
+     */
     public static ArrayList<Step> solveForSteps(int disks) {
         return solveForSteps(disks - 1, 0, 1, 2);
     }
@@ -18,6 +28,10 @@ public class Algorithm {
         result.addAll(solveForSteps(disk - 1, other, to, from));
         return result;
     }
+
+    /**
+     * Static class that defines the direction of the disk
+     */
 
     public static class Step {
         private int from, to, disk;

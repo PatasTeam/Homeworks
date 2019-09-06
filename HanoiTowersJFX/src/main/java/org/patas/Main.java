@@ -11,6 +11,16 @@ import javafx.util.Duration;
 import org.patas.controls.Controls;
 import org.patas.graphics.Towers;
 
+/**
+ * Java program to solve Hanoi Towers problem
+ *
+ * @author Mario Emilio Jiménez Vizcaíno
+ * @author Arturo Efrén Jiménez Garibaldy
+ * @author Kevin Torres Martínez
+ * @version 1.0
+ * @since 06-09-2019
+ */
+
 public class Main extends Application {
     private int numDisks = 3;
     private VBox root;
@@ -22,6 +32,11 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
+
+    /**
+     * start method of the application abstract class
+     * @param stage The window that contains Scenes and Nodes javaFX
+     */
 
     @Override
     public void start(Stage stage) {
@@ -38,6 +53,12 @@ public class Main extends Application {
         stage.show();
     }
 
+    /**
+     * resetTowers method to return the towers to their initial state
+     * @param numDisks Disks showed in the interface and used to calculate
+     *                 the number of steps in the algorithm
+     */
+
     public void resetTowers(int numDisks) {
         this.numDisks = numDisks;
         progressBar.setProgress(0);
@@ -47,9 +68,19 @@ public class Main extends Application {
         setupPlayPause();
     }
 
+    /**
+     * Returns the number of disks
+     * @return numDisks
+     */
+
     public int getNumDisks() {
         return numDisks;
     }
+
+    /**
+     * Method that creates the animation of the solution
+     * @param s Get the number of step directions
+     */
 
     public void moveStep(StepDirection s) {
         double oldProgress = progressBar.getProgress();
@@ -60,6 +91,10 @@ public class Main extends Application {
         );
         progressBarAnimation.play();
     }
+
+    /**
+     * Method to play and pause animation
+     */
 
     private void setupPlayPause() {
         SequentialTransition seq = new SequentialTransition();

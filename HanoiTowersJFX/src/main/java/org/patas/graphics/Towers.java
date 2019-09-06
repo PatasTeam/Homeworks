@@ -17,6 +17,10 @@ public class Towers extends Pane {
     private int numSteps;
     private ListIterator<Algorithm.Step> iterator;
 
+    /**
+     *
+     * @param numDisks Number of disks
+     */
     public Towers(int numDisks) {
         towerSizes = new int[3];
         generateDisks(numDisks);
