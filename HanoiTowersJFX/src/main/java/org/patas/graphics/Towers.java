@@ -31,6 +31,9 @@ public class Towers extends Pane {
         renderDecorations();
     }
 
+    /**
+     *
+     */
     private void renderDecorations() {
         for (int i = 0; i < 3; i++) {
             double lineX = 125 + i * 250;
@@ -44,6 +47,10 @@ public class Towers extends Pane {
         }
     }
 
+    /**
+     *
+     * @param numDisks
+     */
     private void generateDisks(int numDisks) {
         disks = new Disk[numDisks];
         for (int i = numDisks - 1; i >= 0; i--) {
@@ -55,6 +62,11 @@ public class Towers extends Pane {
         getChildren().addAll(disks);
     }
 
+    /**
+     *
+     * @param tower
+     * @return
+     */
     private double getNextDiskY(int tower) {
         return 350 - (towerSizes[tower] + 1) * Disk.getHeight(disks.length);
     }
@@ -66,6 +78,10 @@ public class Towers extends Pane {
         return tt;
     }
 
+    /**
+     *
+     * @return
+     */
     public double next() {
         if (!iterator.hasNext()) return 1;
         Algorithm.Step step = iterator.next();
@@ -75,6 +91,10 @@ public class Towers extends Pane {
         return (double) iterator.nextIndex() / numSteps;
     }
 
+    /**
+     *
+     * @return
+     */
     public double prev() {
         if (!iterator.hasPrevious()) return 0;
         Algorithm.Step step = iterator.previous();

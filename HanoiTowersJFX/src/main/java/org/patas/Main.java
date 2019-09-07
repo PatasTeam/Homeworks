@@ -37,7 +37,6 @@ public class Main extends Application {
      * start method of the application abstract class
      * @param stage The window that contains Scenes and Nodes javaFX
      */
-
     @Override
     public void start(Stage stage) {
         controls = new Controls(this);
@@ -58,7 +57,6 @@ public class Main extends Application {
      * @param numDisks Disks showed in the interface and used to calculate
      *                 the number of steps in the algorithm
      */
-
     public void resetTowers(int numDisks) {
         this.numDisks = numDisks;
         progressBar.setProgress(0);
@@ -72,7 +70,6 @@ public class Main extends Application {
      * Returns the number of disks
      * @return numDisks
      */
-
     public int getNumDisks() {
         return numDisks;
     }
@@ -81,7 +78,6 @@ public class Main extends Application {
      * Method that creates the animation of the solution
      * @param s Get the number of step directions
      */
-
     public void moveStep(StepDirection s) {
         double oldProgress = progressBar.getProgress();
         double newProgress = s.equals(StepDirection.PREV) ? towers.prev() : towers.next();
@@ -95,7 +91,6 @@ public class Main extends Application {
     /**
      * Method to play and pause animation
      */
-
     private void setupPlayPause() {
         SequentialTransition seq = new SequentialTransition();
         controls.setAnimationControlFunctions(seq::play, seq::pause);
