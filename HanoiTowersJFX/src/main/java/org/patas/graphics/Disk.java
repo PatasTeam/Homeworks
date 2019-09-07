@@ -15,8 +15,8 @@ class Disk extends Rectangle {
      * to define the width, height, fill color
      * and the arc of the disk
      *
-     * @param diskNum
-     * @param numDisks
+     * @param diskNum Current disk number
+     * @param numDisks Number of total disk
      */
     Disk(int diskNum, int numDisks) {
         this.diskNum = diskNum;
@@ -55,7 +55,7 @@ class Disk extends Rectangle {
      * Receives the number of disks that are going to be
      * displayed and returns the color that the disk
      * will have depending on the total number of discs
-     * and the number of the current disc
+     * and the number of the current disk
      *
      * @param numDisks Number of disks
      * @return Color of the disk
