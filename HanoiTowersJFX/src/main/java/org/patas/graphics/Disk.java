@@ -6,14 +6,12 @@ import javafx.scene.shape.Rectangle;
 /**
  * Disk class extends Rectangle.
  */
-
 class Disk extends Rectangle {
     private int diskNum;
 
     /**
-     * The class constructor calls the methods
-     * to define the width, height, fill color
-     * and the arc of the disk
+     * The constructor calls the methods to define the width, height, fill
+     * color and the arc of the disk depending on its order
      *
      * @param diskNum Current disk number
      * @param numDisks Number of total disk
@@ -28,10 +26,9 @@ class Disk extends Rectangle {
     }
 
     /**
-     * Receives the total number of disks and defines the
-     * height of the disk that are going to be displayed
-     * depending on the width of the box, the total number
-     * of disk and the number of the current disk
+     * Receives the total number of disks and defines the height of the disk
+     * that are going to be displayed depending on the width of the box, the
+     * total number of disks and the number of the current disk
      *
      * @param numDisks Number of disks
      * @return Width of the disk
@@ -41,8 +38,8 @@ class Disk extends Rectangle {
     }
 
     /**
-     * Receives the numbers of disks to display and returns
-     * its heigh depending on the total height of the box
+     * Receives the numbers of disks to display and returns its height
+     * depending on the total height of the box
      *
      * @param numDisks Number of disks
      * @return Height of the disk
@@ -52,10 +49,9 @@ class Disk extends Rectangle {
     }
 
     /**
-     * Receives the number of disks that are going to be
-     * displayed and returns the color that the disk
-     * will have depending on the total number of discs
-     * and the number of the current disk
+     * Receives the number of disks that are going to be displayed and
+     * returns the color that the disk will have depending on the total
+     * number of disks and the number of the current disk
      *
      * @param numDisks Number of disks
      * @return Color of the disk

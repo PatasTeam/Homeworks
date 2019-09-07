@@ -3,12 +3,13 @@ package org.patas;
 import java.util.ArrayList;
 
 /**
- * Recursive algorithm class to solve Hanoi Towers.
+ * Recursive algorithm to solve Hanoi Towers problem.
  */
 
 public class Algorithm {
     /**
-     * Method calls itself and solves for n disks.
+     * Method calls a private one with the same
+     * name and solves for n disks.
      *
      * @param disks Number of disks
      * @return Steps to solve the recursion
@@ -17,6 +18,15 @@ public class Algorithm {
         return solveForSteps(disks - 1, 0, 1, 2);
     }
 
+    /**
+     * Recursive method that builds an ArrayList of Steps
+     *
+     * @param disk Disk to move
+     * @param from Index of the tower that has the disk
+     * @param to Index of tower that will receive the disk
+     * @param other Index of other tower
+     * @return ArrayList of Steps
+     */
     private static ArrayList<Step> solveForSteps(int disk, int from, int to, int other) {
         ArrayList<Step> result = new ArrayList<>();
         if (disk == 0) {
@@ -31,8 +41,9 @@ public class Algorithm {
 
     /**
      * Static class that defines the direction of the disk
+     * Has information regarding the size of the disk,
+     * where did it come from and where it is moved to
      */
-
     public static class Step {
         private int from, to, disk;
 

@@ -12,7 +12,7 @@ import org.patas.controls.Controls;
 import org.patas.graphics.Towers;
 
 /**
- * Java program to solve Hanoi Towers problem
+ * JavaFX program to solve Hanoi Towers problem
  *
  * @author Mario Emilio Jiménez Vizcaíno
  * @author Arturo Efrén Jiménez Garibaldy
@@ -34,8 +34,9 @@ public class Main extends Application {
     }
 
     /**
-     * start method of the application abstract class
-     * @param stage The window that contains Scenes and Nodes javaFX
+     * Start method of the application
+     * Builds the Scene presented in the Stage
+     * @param stage The window that contains Scenes and Nodes in JavaFX
      */
     @Override
     public void start(Stage stage) {
@@ -53,9 +54,8 @@ public class Main extends Application {
     }
 
     /**
-     * resetTowers method to return the towers to their initial state
-     * @param numDisks Disks showed in the interface and used to calculate
-     *                 the number of steps in the algorithm
+     * Resets the towers to their initial state
+     * @param numDisks Number of disks to be added in the first tower
      */
     public void resetTowers(int numDisks) {
         this.numDisks = numDisks;
@@ -75,12 +75,12 @@ public class Main extends Application {
     }
 
     /**
-     * Method that creates the animation of the solution
-     * @param s Get the number of step directions
+     * Creates and plays the animation of a step
+     * @param stepDirection Defines the direction of the step
      */
-    public void moveStep(StepDirection s) {
+    public void moveStep(StepDirection stepDirection) {
         double oldProgress = progressBar.getProgress();
-        double newProgress = s.equals(StepDirection.PREV) ? towers.prev() : towers.next();
+        double newProgress = stepDirection.equals(StepDirection.PREV) ? towers.prev() : towers.next();
         Timeline progressBarAnimation = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(progressBar.progressProperty(), oldProgress)),
                 new KeyFrame(STEP_DURATION, new KeyValue(progressBar.progressProperty(), newProgress))
@@ -89,7 +89,8 @@ public class Main extends Application {
     }
 
     /**
-     * Method to play and pause animation
+     * Setups play and pause button in Control's Pane
+     * Calls the methods to set the animation status in Controls
      */
     private void setupPlayPause() {
         SequentialTransition seq = new SequentialTransition();
@@ -97,7 +98,7 @@ public class Main extends Application {
         PauseTransition start = new PauseTransition(Duration.ZERO);
         start.setOnFinished(event -> controls.setAnimationStatus(Animation.Status.RUNNING));
         seq.getChildren().add(start);
-        for (int i = 0; i < Math.pow(2, numDisks); i++) {
+        while (progressBar.getProgress() < 1) {
             PauseTransition p = new PauseTransition(STEP_DURATION);
             p.setOnFinished(event -> moveStep(StepDirection.NEXT));
             seq.getChildren().add(p);
@@ -105,6 +106,9 @@ public class Main extends Application {
         seq.setOnFinished(event -> controls.setAnimationStatus(Animation.Status.STOPPED));
     }
 
+    /**
+     * Enum with the possible directions of a step
+     */
     public enum StepDirection {
         PREV, NEXT
     }

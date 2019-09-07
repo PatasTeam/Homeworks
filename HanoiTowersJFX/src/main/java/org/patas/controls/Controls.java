@@ -15,6 +15,10 @@ public class Controls extends HBox {
     private PlayAnimationInterface playAnimation;
     private PauseAnimationInterface pauseAnimation;
 
+    /**
+     * Constructs the Controls Pane
+     * @param main Main class
+     */
     public Controls(Main main) {
         this.main = main;
         setSpacing(20);
@@ -28,6 +32,9 @@ public class Controls extends HBox {
         setAnimationStatus(Animation.Status.PAUSED);
     }
 
+    /**
+     * Adds controls to change the number of disks in the Towers Pane
+     */
     private void setupNumDisksControls() {
         Label numDisksLbl = new Label("" + main.getNumDisks());
         numDisksLbl.setFont(Font.font(18));
@@ -43,6 +50,9 @@ public class Controls extends HBox {
         getChildren().addAll(minus, numDisksLbl, plus);
     }
 
+    /**
+     * Adds the controls to move a step, reset the towers or to play and pause
+     */
     private void setupStepControls() {
         getChildren().addAll(
                 new CustomButton("←", event -> main.moveStep(Main.StepDirection.PREV)),
@@ -52,12 +62,21 @@ public class Controls extends HBox {
         );
     }
 
+    /**
+     * Sets the functions that control the flow of the animation
+     * @param playAnimation An interface with just the play() method
+     * @param pauseAnimation An interface with just the pause() method
+     */
     public void setAnimationControlFunctions(PlayAnimationInterface playAnimation,
                                              PauseAnimationInterface pauseAnimation) {
         this.playAnimation = playAnimation;
         this.pauseAnimation = pauseAnimation;
     }
 
+    /**
+     * Changes the icon and the EventHandler of the playPause button
+     * @param animationStatus The current animation status
+     */
     public void setAnimationStatus(Animation.Status animationStatus) {
         switch (animationStatus) {
             case RUNNING:

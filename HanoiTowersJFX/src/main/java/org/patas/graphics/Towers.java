@@ -18,7 +18,7 @@ public class Towers extends Pane {
     private ListIterator<Algorithm.Step> iterator;
 
     /**
-     *
+     * Construct a Towers pane depending on the number of disks provided
      * @param numDisks Number of disks
      */
     public Towers(int numDisks) {
@@ -32,7 +32,7 @@ public class Towers extends Pane {
     }
 
     /**
-     *
+     * Add the graphical stands in which the disks are placed to the pane
      */
     private void renderDecorations() {
         for (int i = 0; i < 3; i++) {
@@ -48,8 +48,8 @@ public class Towers extends Pane {
     }
 
     /**
-     *
-     * @param numDisks
+     * Fill the disks array and put them in its starting position
+     * @param numDisks Number of disks to be generated
      */
     private void generateDisks(int numDisks) {
         disks = new Disk[numDisks];
@@ -63,9 +63,9 @@ public class Towers extends Pane {
     }
 
     /**
-     *
-     * @param tower
-     * @return
+     * Get y coordinate for the next disk to be placed in a specific tower
+     * @param tower Tower index
+     * @return y coordinate
      */
     private double getNextDiskY(int tower) {
         return 350 - (towerSizes[tower] + 1) * Disk.getHeight(disks.length);
@@ -79,8 +79,9 @@ public class Towers extends Pane {
     }
 
     /**
-     *
-     * @return
+     * Executes the animation of the disk moving from a tower to another one
+     * following the next step provided by the iterator
+     * @return progress between 0.0 and 1.0
      */
     public double next() {
         if (!iterator.hasNext()) return 1;
@@ -92,8 +93,9 @@ public class Towers extends Pane {
     }
 
     /**
-     *
-     * @return
+     * Executes the animation of the disk moving from a tower to another one
+     * following the previous step provided by the iterator
+     * @return progress between 0.0 and 1.0
      */
     public double prev() {
         if (!iterator.hasPrevious()) return 0;
