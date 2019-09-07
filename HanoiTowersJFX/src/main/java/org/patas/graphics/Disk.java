@@ -10,6 +10,14 @@ import javafx.scene.shape.Rectangle;
 class Disk extends Rectangle {
     private int diskNum;
 
+    /**
+     * The class constructor calls the methods
+     * to define the width, height, fill color
+     * and the arc of the disk
+     *
+     * @param diskNum
+     * @param numDisks
+     */
     Disk(int diskNum, int numDisks) {
         this.diskNum = diskNum;
         setWidth(getWidth(numDisks));
@@ -21,7 +29,7 @@ class Disk extends Rectangle {
 
     /**
      * Receives the total number of disks and defines the
-     * heigh of the disks that are going to be displayed
+     * height of the disk that are going to be displayed
      * depending on the width of the box, the total number
      * of disk and the number of the current disk
      *
@@ -34,7 +42,7 @@ class Disk extends Rectangle {
 
     /**
      * Receives the numbers of disks to display and returns
-     * its heigh depending on the total heigh of the box
+     * its heigh depending on the total height of the box
      *
      * @param numDisks Number of disks
      * @return Height of the disk
