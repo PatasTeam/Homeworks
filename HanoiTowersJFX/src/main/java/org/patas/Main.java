@@ -98,7 +98,7 @@ public class Main extends Application {
         PauseTransition start = new PauseTransition(Duration.ZERO);
         start.setOnFinished(event -> controls.setAnimationStatus(Animation.Status.RUNNING));
         seq.getChildren().add(start);
-        while (progressBar.getProgress() < 1) {
+        for (int i = 0; i < Math.pow(2, numDisks); i++) {
             PauseTransition p = new PauseTransition(STEP_DURATION);
             p.setOnFinished(event -> moveStep(StepDirection.NEXT));
             seq.getChildren().add(p);
