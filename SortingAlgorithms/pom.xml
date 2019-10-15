@@ -10,7 +10,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>11</maven.compiler.release>
-        <javafx.version>13</javafx.version>
     </properties>
 
   <name>SortingAlgorithms</name>
@@ -19,26 +18,31 @@
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
-      <version>${javafx.version}</version>
+      <version>13</version>
     </dependency>
+  <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>13</version>
+  </dependency>
     <!-- Uncomment for cross-platform fat jar-->
     <!--
       <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-graphics</artifactId>
-        <version>${javafx.version}</version>
+        <version>13</version>
         <classifier>win</classifier>
     </dependency>
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-graphics</artifactId>
-        <version>${javafx.version}</version>
+        <version>13</version>
         <classifier>linux</classifier>
     </dependency>
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-graphics</artifactId>
-        <version>${javafx.version}</version>
+        <version>13</version>
         <classifier>mac</classifier>
     </dependency>
     -->
