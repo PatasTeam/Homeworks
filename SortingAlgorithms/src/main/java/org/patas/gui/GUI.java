@@ -7,6 +7,7 @@ import org.patas.Main;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URI;
 
 public class GUI extends Scene {
@@ -15,9 +16,7 @@ public class GUI extends Scene {
         Pane root = new Pane();
         FXMLLoader loader = new FXMLLoader();
         try {
-            URI fxmlDocPath = getClass().getResource("./user_input.fxml").toURI();
-            System.out.println(fxmlDocPath);
-            FileInputStream fxmlStream = new FileInputStream(new File(fxmlDocPath));
+            InputStream fxmlStream = getClass().getResourceAsStream("/user_input.fxml");
             root = (Pane) loader.load(fxmlStream);
 
         } catch (Exception e) {
